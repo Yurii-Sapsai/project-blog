@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -30,7 +31,7 @@ const Header = () => {
 
 
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-              <img src={logo} alt="logo" />
+              <NavLink to='/'><img src={logo} alt="logo" /></NavLink>
               <nav >
                 <ul>
                   <li>CITIES</li>
@@ -39,7 +40,7 @@ const Header = () => {
                   <li>NEWS</li>
                 </ul>
               </nav>
-                <button>Create new post</button>
+              <NavLink to='/admin'><button>Create new post</button></NavLink>
             </Box>
 
 

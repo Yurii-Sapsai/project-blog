@@ -1,4 +1,5 @@
 import HomePage from "./pages/HomePage/HomePage";
+import Header from "./components/Header/Header";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import LoginPage from './pages/AdminPage/LoginPage/LoginPage'
 import RegistrationPage from "./pages/AdminPage/RegistrationPage/RegistrationPage";
@@ -9,11 +10,14 @@ import { useAuth } from './hooks/use-auth';
 
 function App() {
 
-  const {isAuth} = useAuth()
+  const { isAuth } = useAuth()
 
   return (
     <div >
       <Router>
+
+        <Header />
+
         <Routes>
 
           <Route path="/" element={<HomePage />} />

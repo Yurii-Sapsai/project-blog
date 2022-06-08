@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from '../../../components/Header/Header'
+
 import Form from '../../../components/Form/Form'
 
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../../store/slices/userSlice'
-
+import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -30,9 +30,13 @@ function RegistrationPage() {
 
   return (
     <div>
-      <Header />
-      <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'500px' }}>
+   
+      <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:'500px' }}>
           <Form title={'Registration'} handleClick={handleRegister} />
+          <div>
+          If you have an account, please login  <br />
+          <button><NavLink to='/admin/login'>Login</NavLink></button>
+          </div>
       </div>
     </div>
   )
