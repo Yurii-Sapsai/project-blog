@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import AddPost from '../../components/AddPost/AddPost'
-
-import { useDispatch } from 'react-redux'
-import { removeUser } from '../../store/slices/userSlice';
 
 import { UserAuth } from '../../context/AuthContext';
 
@@ -15,8 +12,6 @@ function AdminPage() {
   const { user, logout } = UserAuth()
   const navigate = useNavigate()
 
-  const dispatch = useDispatch()
-
   const handlerLogout = async () => {
     try {
       await logout()
@@ -27,11 +22,9 @@ function AdminPage() {
     }
   }
 
-
-
   return (
     <div>
-      
+
       <button onClick={() => handlerLogout()}>Log Out</button>
       <br />
 
