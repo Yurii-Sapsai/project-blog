@@ -4,33 +4,32 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import LoginPage from './pages/AdminPage/LoginPage/LoginPage'
 import RegistrationPage from "./pages/AdminPage/RegistrationPage/RegistrationPage";
 
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-import { useAuth } from './hooks/use-auth';
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./services/ProtectedRoute";
+
 
 function App() {
-
-  const { isAuth } = useAuth()
 
   return (
     <div >
       <Router>
+        <AuthContextProvider>
 
-        <Header />
+          <Header />
 
-        <Routes>
+          <Routes>
 
-          <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
 
-          {isAuth
-            ? <Route path="/admin" element={<AdminPage />} />
-            : <Route path="/admin" element={<Navigate to="/admin/login" />} />}
+            <Route path="/admin" element={<ProtectedRoute> <AdminPage /> </ProtectedRoute>} />
+            <Route path="/admin/login" element={<LoginPage />} />
+            <Route path="/admin/registration" element={<RegistrationPage />} />
 
-          <Route path="/admin/login" element={<LoginPage />} />
-          <Route path="/admin/registration" element={<RegistrationPage />} />
+          </Routes>
 
-
-        </Routes>
+        </AuthContextProvider>
       </Router>
     </div>
   );

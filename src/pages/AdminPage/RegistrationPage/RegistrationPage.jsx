@@ -7,25 +7,27 @@ import { setUser } from '../../../store/slices/userSlice'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../../firebase'
+
+import { UserAuth } from '../../../context/AuthContext'
+
 
 function RegistrationPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleRegister = (email, password) => {
-    const auth = getAuth();
+  const {createUser} = UserAuth()
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken
-        }))
-        navigate('/admin')
-      })
-      .catch((item) => console.log(item))
+  const handleRegister = async (email, password) => {
+
+    try{
+      await createUser(email, password)
+      navigate('/admin')
+
+    } catch (error) {
+        console.log(error)
+    }
+    
   }
 
   return (
