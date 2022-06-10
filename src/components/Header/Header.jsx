@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,7 +12,12 @@ import Container from '@mui/material/Container';
 import logo from '../../images/logo.png'
 import './Header.sass'
 
+import { UserAuth } from '../../context/AuthContext';
+
 const Header = () => {
+
+  const { user, logout } = UserAuth()
+  const navigate = useNavigate()
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -22,6 +27,16 @@ const Header = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const handlerLogout = async () => {
+    try {
+      await logout()
+      navigate('/admin/login')
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <header>
@@ -33,41 +48,52 @@ const Header = () => {
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
 
               <NavLink to='/'><img src={logo} alt="logo" /></NavLink>
-              <NavLink to='/admin'><button>Create new post</button></NavLink>
-              
+
+              {user
+                ? <button className='signUp' onClick={() => handlerLogout()}>Log Out</button>
+                : <div>
+                  <NavLink to='/admin/registration'><button className='signUp'>Sign Up</button></NavLink>
+                  <NavLink to='/admin/login'><button className='signIn'>Sign In</button></NavLink>
+                </div>
+              }
+
+
+
             </Box>
 
 
-      <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'space-between', alignItems:'center', width:'100%' }}>
-      
-        <MenuIcon sx={{ color: 'black', height:'30px', width:'30px', cursor:'pointer' }} onClick={handleOpenNavMenu}/>
-        <img src={logo} alt="logo" />
+            <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
 
-      <Menu
-        id="menu-appbar"
-        anchorEl={anchorElNav}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        open={Boolean(anchorElNav)}
-        onClose={handleCloseNavMenu}
-        sx={{ display: { xs: 'block', md: 'none' } }}
-      >
-                <ul>
-                  <li>CITIES</li>
-                  <li>CULTURE</li>
-                  <li>HISTORY</li>
-                  <li>NEWS</li>
-                </ul>
-      </Menu>
+              <MenuIcon sx={{ color: 'black', height: '90px', width: '30px', cursor: 'pointer' }} onClick={handleOpenNavMenu} />
+              <NavLink to='/'><img src={logo} alt="logo" /></NavLink>
 
-    </Box> 
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{ display: { xs: 'block', md: 'none' } }}
+              >
+                <div style={{padding:'25px'}}>
+                {user
+                ? <button className='signUp' onClick={() => handlerLogout()} style={{width:'100px' , height:'35px'}}>Log Out</button>
+                : <div>
+                  <NavLink to='/admin/registration'><button className='signUp' style={{width:'100px' , height:'35px'}}>Sign Up</button></NavLink>
+                  <NavLink to='/admin/login'><button className='signIn' style={{width:'100px' , height:'35px'}}>Sign In</button></NavLink>
+                </div>
+              }
+                </div>
+              </Menu>
+
+            </Box>
 
 
 
