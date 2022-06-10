@@ -50,7 +50,10 @@ const Header = () => {
               <NavLink to='/'><img src={logo} alt="logo" /></NavLink>
 
               {user
-                ? <button className='signUp' onClick={() => handlerLogout()}>Log Out</button>
+                ? <div>
+                  <NavLink to='/admin/'><button className='signIn'>Create new post</button></NavLink>
+                  <button className='signUp' onClick={() => handlerLogout()} >Log Out</button>
+                </div>
                 : <div>
                   <NavLink to='/admin/registration'><button className='signUp'>Sign Up</button></NavLink>
                   <NavLink to='/admin/login'><button className='signIn'>Sign In</button></NavLink>
@@ -82,14 +85,17 @@ const Header = () => {
                 onClose={handleCloseNavMenu}
                 sx={{ display: { xs: 'block', md: 'none' } }}
               >
-                <div style={{padding:'25px'}}>
-                {user
-                ? <button className='signUp' onClick={() => handlerLogout()} style={{width:'100px' , height:'35px'}}>Log Out</button>
-                : <div>
-                  <NavLink to='/admin/registration'><button className='signUp' style={{width:'100px' , height:'35px'}}>Sign Up</button></NavLink>
-                  <NavLink to='/admin/login'><button className='signIn' style={{width:'100px' , height:'35px'}}>Sign In</button></NavLink>
-                </div>
-              }
+                <div style={{ padding: '25px' }}>
+                  {user
+                    ? <div>
+                      <NavLink to='/admin/'><button className='signIn' style={{ width: 'auto', height: '35px', padding: '0px 15px' }}>Create new post</button></NavLink>
+                      <button className='signUp' onClick={() => handlerLogout()} style={{ width: '100px', height: '35px' }}>Log Out</button>
+                    </div>
+                    : <div>
+                      <NavLink to='/admin/registration'><button className='signUp' style={{ width: '100px', height: '35px' }}>Sign Up</button></NavLink>
+                      <NavLink to='/admin/login'><button className='signIn' style={{ width: '100px', height: '35px' }}>Sign In</button></NavLink>
+                    </div>
+                  }
                 </div>
               </Menu>
 

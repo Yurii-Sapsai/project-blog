@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './AddPost.sass'
 
 import { getDatabase, ref, set } from "firebase/database";
+import { getStorage, ref as reff, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 
 import { categories } from '../Categories/Categories';
@@ -10,8 +11,11 @@ function AddPost() {
   const [category, setCategory] = useState('Cities')
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
+  const [ file, setFile] = useState(null)
   const uuid = uuidv4()
   const date = new Date()
+
+  
 
   const handleCategory = (e) => {
     setCategory(e.target.value);
@@ -23,12 +27,27 @@ function AddPost() {
     setText(e.target.value);
   }
 
+  const handleFile = (e) => {
+    setFile(e.target.files[0])
+    console.log(file)
+  }
+
   const createPost = (uuid, category, title, text, date) => {
 
     const db = getDatabase();
     const reference = ref(db, 'posts/' + uuid)
 
+    console.log(file)
+    const storage = getStorage();
+    const storageRef = reff(storage, uuid);
+    uploadBytes(storageRef, file).then((file) => {
+      console.log(file)
+      console.log('Uploaded a blob or file!');
+    });
+
+
     set(reference, {
+      uuid,
       category,
       title,
       text, 
@@ -66,6 +85,8 @@ function AddPost() {
         onChange={(e) => handleText(e)}
       >
       </textarea>
+
+      <input type="file" onChange={(e) => handleFile(e)}/>
 
       <button onClick={() => createPost(uuid, category, title, text, date)} >CREATE</button>
 
