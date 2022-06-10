@@ -31,16 +31,10 @@ const Header = () => {
 
 
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+
               <NavLink to='/'><img src={logo} alt="logo" /></NavLink>
-              <nav >
-                <ul>
-                  <li>CITIES</li>
-                  <li>CULTURE</li>
-                  <li>HISTORY</li>
-                  <li>NEWS</li>
-                </ul>
-              </nav>
               <NavLink to='/admin'><button>Create new post</button></NavLink>
+              
             </Box>
 
 

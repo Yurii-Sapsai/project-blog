@@ -1,21 +1,26 @@
 import React from 'react'
 import './Main.sass'
 
-import { Grid, Box } from '@mui/material';
+import Posts from '../Posts/Posts';
+import Categories from '../Categories/Categories';
+import Social from '../Social/Social';
+
+import { Grid} from '@mui/material';
+
 
 function Main() {
   return (
     <main>
-        <Grid container>
-            <Grid item md={9} style={{backgroundColor:'white'}}>
-u
-            </Grid>
-            <Grid item md={3}>
-
-            </Grid>
-
+      <Grid container>
+        <Grid item md={12}>
+          <Categories />
         </Grid>
-        
+        <Grid item md={12}>
+          <Posts />
+        </Grid>
+        <Social/>
+      </Grid>
+
     </main>
   )
 }
