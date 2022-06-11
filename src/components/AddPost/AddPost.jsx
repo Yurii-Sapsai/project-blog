@@ -8,14 +8,15 @@ import { v4 as uuidv4 } from 'uuid';
 import { categories } from '../Categories/Categories';
 
 function AddPost() {
-  const [category, setCategory] = useState('Cities')
+  const [category, setCategory] = useState('CITIES')
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
-  const [ file, setFile] = useState(null)
+  const [file, setFile] = useState(null)
+
   const uuid = uuidv4()
   const date = new Date()
 
-  
+
 
   const handleCategory = (e) => {
     setCategory(e.target.value);
@@ -29,7 +30,6 @@ function AddPost() {
 
   const handleFile = (e) => {
     setFile(e.target.files[0])
-    console.log(file)
   }
 
   const createPost = (uuid, category, title, text, date) => {
@@ -37,11 +37,9 @@ function AddPost() {
     const db = getDatabase();
     const reference = ref(db, 'posts/' + uuid)
 
-    console.log(file)
     const storage = getStorage();
     const storageRef = reff(storage, uuid);
     uploadBytes(storageRef, file).then((file) => {
-      console.log(file)
       console.log('Uploaded a blob or file!');
     });
 
@@ -50,7 +48,7 @@ function AddPost() {
       uuid,
       category,
       title,
-      text, 
+      text,
       date: date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
     });
   }
@@ -62,10 +60,10 @@ function AddPost() {
         name="category"
         value={category}
         onChange={(e) => handleCategory(e)} >
-        {categories.map((category, index)=>(
+        {categories.map((category, index) => (
           <option value={category} key={index}>{category}</option>
-        ))}  
-        
+        ))}
+
       </select>
 
       <label >Title</label>
@@ -86,7 +84,7 @@ function AddPost() {
       >
       </textarea>
 
-      <input type="file" onChange={(e) => handleFile(e)}/>
+      <input type="file" onChange={(e) => handleFile(e)} />
 
       <button onClick={() => createPost(uuid, category, title, text, date)} >CREATE</button>
 

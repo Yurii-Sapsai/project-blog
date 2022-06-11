@@ -1,19 +1,23 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { setCategory } from '../../store/slices/categorySlice'
 import './Categories.sass'
 
 
-export const categories = ['CITIES',  'HISTORY', 'CULTURE', 'SPORT' ,'NEWS']
+export const categories = ['CITIES', 'HISTORY', 'CULTURE', 'SPORT', 'NEWS']
 
 function Categories() {
 
+  const dispatch = useDispatch()
+
   return (
     <div className='categories'>
-        <h2>ABOUT UKRAINE</h2>
-        <ul>
-                  {categories.map((category, index)=>(
-                      <li key={index}>{category}</li>
-                  ))}
-        </ul>
+      <h2>ABOUT UKRAINE</h2>
+      <ul>
+        {categories.map((category, index) => (
+          <li key={index} onClick={() => dispatch(setCategory(category))}>{category}</li>
+        ))}
+      </ul>
     </div>
   )
 }
