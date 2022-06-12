@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import './Form.sass'
 
-const Form = ({ title, handleClick }) => {
+const Form = ({ title, handleClick, button }) => {
 
     const [email, setEmail] = useState('')
     const [emailDirty, setEmailDirty] = useState(false)
@@ -57,27 +58,32 @@ const Form = ({ title, handleClick }) => {
     }, [emailError, passwordError]);
 
     return (
-        <div>
-            <input type="email"
-                name="email"
-                value={email}
-                onChange={(e) => handleEmail(e)}
-                onBlur={(e) => blurHandler(e)}
-                placeholder="Please enter email" />
-            <br />
-            {(emailDirty && emailError) && <small style={{ color: 'red' }}>{emailError}<br /></small>}
+        <div className="form">
+            <h2>{title}</h2>
+            <div>
+                <input type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => handleEmail(e)}
+                    onBlur={(e) => blurHandler(e)}
+                    placeholder="Please enter email" />
+                    <br />
+                {(emailDirty && emailError) && <small style={{ color: 'red' }}>{emailError}<br /></small>}
+            </div>
 
-            <input type="password"
-                name="password"
-                value={password}
-                onChange={(e) => handlePassword(e)}
-                onBlur={(e) => blurHandler(e)}
-                placeholder="Please enter password" />
-            <br />
-            {(passwordDirty && passwordError) && <small style={{ color: 'red' }}>{passwordError}<br /></small>}
+            <div>
+                <input type="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => handlePassword(e)}
+                    onBlur={(e) => blurHandler(e)}
+                    placeholder="Please enter password" />
+                    <br />
+                {(passwordDirty && passwordError) && <small style={{ color: 'red' }}>{passwordError}<br /></small>}
+            </div>
 
             <button onClick={() => handleClick(email, password)}
-                disabled={!formValid}>{title}
+                disabled={!formValid}>{button}
             </button>
         </div>
     )

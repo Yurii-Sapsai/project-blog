@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './RegistrationPage.sass'
 import Form from '../../../components/Form/Form'
 
 import { NavLink } from 'react-router-dom'
@@ -26,15 +26,15 @@ function RegistrationPage() {
   }
 
   return (
-    <div>
+    <div className='registrationPage'>
 
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
-        <Form title={'Registration'} handleClick={handleRegister} />
-        <div>
-          If you have an account, please login  <br />
-          <button><NavLink to='/admin/login'>Login</NavLink></button>
+     
+        <Form title={'Sign Up'} button={'Registration'} handleClick={handleRegister} />
+        <div className='info'>
+          If you have an account, please login
+          <button><NavLink to='/admin/login' style={{color:'white', textDecoration:'none'}}>Sign In</NavLink></button>
         </div>
-      </div>
+     
     </div>
   )
 }
