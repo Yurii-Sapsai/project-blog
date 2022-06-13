@@ -17,6 +17,7 @@ function Categories() {
         {categories.map((category, index) => (
           <li key={index} onClick={() => dispatch(setCategory(category))}>{category}</li>
         ))}
+        <li onClick={() => dispatch(setCategory('ALL'))}>ALL</li>
       </ul>
     </div>
   )

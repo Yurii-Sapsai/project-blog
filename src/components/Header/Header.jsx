@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -18,6 +18,7 @@ const Header = () => {
 
   const { user, logout } = UserAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -51,7 +52,9 @@ const Header = () => {
 
               {user
                 ? <div >
-                  <NavLink to='/admin/'><button className='signUp'>Create new post</button></NavLink>
+                  {location.pathname === '/admin/' || location.pathname === '/admin'
+                      ? null 
+                      : <NavLink to='/admin/'><button className='signUp'>Create new post</button></NavLink>}
                   <button className='signIn' onClick={() => handlerLogout()} >Log Out</button>
                 </div>
                 : <div >
@@ -88,7 +91,9 @@ const Header = () => {
                 <div style={{ padding: '25px' }}>
                   {user
                     ? <div >
-                      <NavLink to='/admin/'><button className='signUp' style={{ width: 'auto', height: '35px', padding: '0px 15px' }}>Create new post</button></NavLink>
+                      {location.pathname === '/admin/' || location.pathname === '/admin'
+                      ? null 
+                      : <NavLink to='/admin/'><button className='signUp' style={{ width: 'auto', height: '35px', padding: '0px 15px' }}>Create new post</button></NavLink>}
                       <button className='signIn' onClick={() => handlerLogout()} style={{ width: '100px', height: '35px' }}>Log Out</button>
                     </div>
                     : <div >

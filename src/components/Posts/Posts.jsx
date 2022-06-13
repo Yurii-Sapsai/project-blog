@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './Posts.sass'
-
 import PostCard from './PostCard/PostCard';
 
 import { getDatabase, ref, child, get } from "firebase/database";
@@ -26,7 +25,11 @@ function Posts() {
                     }
 
                     if (category) {
-                        newArr = newArr.filter((item) => item.category.includes(category))
+                        if (category === 'ALL') {
+                            newArr = newArr
+                        } else {
+                            newArr = newArr.filter((item) => item.category.includes(category))
+                        }
                     }
 
                     setPosts(newArr)
@@ -42,9 +45,7 @@ function Posts() {
     return (
         <div className='posts' >
             {posts.map((post, index) => (
-
                 <PostCard post={post} key={index} />
-
             ))}
         </div>
     )
