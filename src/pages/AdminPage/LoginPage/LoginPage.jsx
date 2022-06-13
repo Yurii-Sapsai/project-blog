@@ -10,7 +10,6 @@ import { UserAuth } from '../../../context/AuthContext'
 function LoginPage() {
 
   const navigate = useNavigate()
-
   const { signIn } = UserAuth()
 
   const [errorLogin, setErrorLogin] = useState(false)
@@ -23,19 +22,17 @@ function LoginPage() {
     } catch (error) {
       setErrorLogin(true)
     }
-
   }
 
   return (
     <div className='loginPage'>
 
       <div>
-        {errorLogin ? <div style={{ color: 'red' }}> Login or password is incorrect </div> : null}
-        <Form title={'Sign In'} button={'Login'} handleClick={handleLogin} />
+        <Form title={'Sign In'} button={'Login'} errorLogin={errorLogin} handleClick={handleLogin} />
       </div>
       <div className='info'>
         If you don't have an account, create a new
-        <button><NavLink to='/admin/registration' style={{color:'white', textDecoration:'none'}}>Sign Up</NavLink></button>
+        <button><NavLink to='/admin/registration' style={{ color: 'white', textDecoration: 'none' }}>Sign Up</NavLink></button>
       </div>
 
     </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './Form.sass'
 
-const Form = ({ title, handleClick, button }) => {
+const Form = ({ title, handleClick, button, errorLogin }) => {
 
     const [email, setEmail] = useState('')
     const [emailDirty, setEmailDirty] = useState(false)
@@ -67,7 +67,7 @@ const Form = ({ title, handleClick, button }) => {
                     onChange={(e) => handleEmail(e)}
                     onBlur={(e) => blurHandler(e)}
                     placeholder="Please enter email" />
-                    <br />
+                <br />
                 {(emailDirty && emailError) && <small style={{ color: 'red' }}>{emailError}<br /></small>}
             </div>
 
@@ -78,9 +78,11 @@ const Form = ({ title, handleClick, button }) => {
                     onChange={(e) => handlePassword(e)}
                     onBlur={(e) => blurHandler(e)}
                     placeholder="Please enter password" />
-                    <br />
+                <br />
                 {(passwordDirty && passwordError) && <small style={{ color: 'red' }}>{passwordError}<br /></small>}
+
             </div>
+            {errorLogin ? <div style={{ color: 'red' }}> Login or password is incorrect </div> : null}
 
             <button onClick={() => handleClick(email, password)}
                 disabled={!formValid}>{button}

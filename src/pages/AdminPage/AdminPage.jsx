@@ -1,4 +1,5 @@
 import React from 'react'
+import './AdminPage.sass'
 
 import AddPost from '../../components/AddPost/AddPost'
 
@@ -11,10 +12,12 @@ function AdminPage() {
   const { user } = UserAuth()
 
   return (
-    <div>
-    
+    <div className='adminPage'>
+      Welcome, {user && user.email}
+      <div>
       <AddPost />
-      email {user && user.email}
+      
+      </div>
 
 
     </div>
