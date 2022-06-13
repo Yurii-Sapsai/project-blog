@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/project-blog/static/css/main.04cd4dbe.css",
+    "main.js": "/project-blog/static/js/main.e51681e1.js",
+    "static/media/banner.jpeg": "/project-blog/static/media/banner.59d499db3af890733db0.jpeg",
+    "static/media/logo.png": "/project-blog/static/media/logo.2b69ea52866da3aa959f.png",
+    "static/media/Bravery.png": "/project-blog/static/media/Bravery.27ecb1683d240d02fae1.png",
+    "index.html": "/project-blog/index.html",
+    "main.04cd4dbe.css.map": "/project-blog/static/css/main.04cd4dbe.css.map",
+    "main.e51681e1.js.map": "/project-blog/static/js/main.e51681e1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04cd4dbe.css",
+    "static/js/main.e51681e1.js"
+  ]
+}
