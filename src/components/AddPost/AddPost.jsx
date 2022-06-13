@@ -60,7 +60,12 @@ function AddPost() {
       text,
       date: date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
     });
+
+    setCategory('')
+    setTitle('')
+    setText('')
   }
+
 
   return (
     <div className='addPost'>
@@ -97,9 +102,7 @@ function AddPost() {
 
       <input type="file" className='inputFile' onChange={(e) => handleFile(e)} />
 
-      <NavLink to='/' style={{margin:'0 auto'}}>
-        <button onClick={() => createPost(uuid, category, title, text, date)} disabled={!formValid}>Add post</button>
-      </NavLink>
+      <a href="/project-blog"><button onClick={() => createPost(uuid, category, title, text, date)} disabled={!formValid}>Add post</button></a>
 
     </div>
   )

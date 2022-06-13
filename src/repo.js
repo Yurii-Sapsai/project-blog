@@ -1,0 +1,1 @@
+export const REPO_NAME = 'project-blog'

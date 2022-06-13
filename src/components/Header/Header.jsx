@@ -62,11 +62,7 @@ const Header = () => {
                   <NavLink to='/admin/login'><button className='signIn'>Sign In</button></NavLink>
                 </div>
               }
-
-
-
             </Box>
-
 
             <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
 
@@ -103,11 +99,7 @@ const Header = () => {
                   }
                 </div>
               </Menu>
-
             </Box>
-
-
-
 
           </Toolbar>
         </Container>

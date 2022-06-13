@@ -1,6 +1,7 @@
 {
   "name": "blog-app",
   "version": "0.1.0",
+  "homepage": "https://yurii-sapsai.github.io/project-blog/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -27,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-gh-pages": "gh-pages -d build",
+    "deploy": "npm run build && npm run build-gh-pages"
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }

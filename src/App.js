@@ -5,6 +5,7 @@ import LoginPage from './pages/AdminPage/LoginPage/LoginPage'
 import RegistrationPage from "./pages/AdminPage/RegistrationPage/RegistrationPage";
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import {REPO_NAME} from './repo'
 
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./services/ProtectedRoute";
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div >
-      <Router>
+      <Router basename={REPO_NAME}>
         <AuthContextProvider>
 
           <Header />
