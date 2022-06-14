@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import './Posts.sass'
+import React, { useEffect, useState } from 'react';
+import './Posts.sass';
 import PostCard from './PostCard/PostCard';
 
 import { getDatabase, ref, child, get } from "firebase/database";
 
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 function Posts() {
 
-    const [posts, setPosts] = useState([])
-    const { category } = useSelector(state => state.category)
+    const [posts, setPosts] = useState([]);
+    const { category } = useSelector(state => state.category);
 
     const dbRef = ref(getDatabase());
 
@@ -19,27 +19,27 @@ function Posts() {
             .then((item) => {
                 if (item.exists()) {
 
-                    let newArr = []
+                    let newArr = [];
                     for (let key in item.val()) {
-                        newArr.push(item.val()[key])
+                        newArr.push(item.val()[key]);
                     }
 
                     if (category) {
                         if (category === 'ALL') {
-                            newArr = newArr
+                            newArr = newArr;
                         } else {
-                            newArr = newArr.filter((item) => item.category.includes(category))
+                            newArr = newArr.filter((item) => item.category.includes(category));
                         }
                     }
 
-                    setPosts(newArr)
+                    setPosts(newArr);
                 } else {
                     console.log("No data available");
                 }
             }).catch((error) => {
                 console.error(error);
             });
-    }, [category])
+    }, [category]);
 
 
     return (
@@ -51,6 +51,6 @@ function Posts() {
     )
 }
 
-export default Posts
+export default Posts;
 
 

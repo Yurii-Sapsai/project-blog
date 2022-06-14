@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 
-import './Social.sass'
+import './Social.sass';
 
 function Social() {
     return (
@@ -20,4 +20,4 @@ function Social() {
     )
 }
 
-export default Social
+export default Social;

@@ -1,14 +1,14 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setCategory } from '../../store/slices/categorySlice'
-import './Categories.sass'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setCategory } from '../../store/slices/categorySlice';
+import './Categories.sass';
 
 
-export const categories = ['CITIES', 'HISTORY', 'CULTURE', 'SPORT', 'NEWS']
+export const categories = ['CITIES', 'HISTORY', 'CULTURE', 'SPORT', 'NEWS'];
 
 function Categories() {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <div className='categories'>
@@ -23,4 +23,4 @@ function Categories() {
   )
 }
 
-export default Categories
+export default Categories;

@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import './Form.sass'
+import './Form.sass';
 
 const Form = ({ title, handleClick, button, errorLogin }) => {
 
-    const [email, setEmail] = useState('')
-    const [emailDirty, setEmailDirty] = useState(false)
-    const [emailError, setEmailError] = useState('Email cannot be empty')
+    const [email, setEmail] = useState('');
+    const [emailDirty, setEmailDirty] = useState(false);
+    const [emailError, setEmailError] = useState('Email cannot be empty');
 
-    const [password, setPassword] = useState('')
-    const [passwordDirty, setPasswordDirty] = useState(false)
-    const [passwordError, setPasswordError] = useState('Password cannot be empty')
+    const [password, setPassword] = useState('');
+    const [passwordDirty, setPasswordDirty] = useState(false);
+    const [passwordError, setPasswordError] = useState('Password cannot be empty');
 
-    const [formValid, setFormValid] = useState(false)
+    const [formValid, setFormValid] = useState(false);
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
@@ -91,4 +91,4 @@ const Form = ({ title, handleClick, button, errorLogin }) => {
     )
 }
 
-export default Form
+export default Form;

@@ -1,5 +1,5 @@
-import React from 'react'
-import './Main.sass'
+import React from 'react';
+import './Main.sass';
 
 import Posts from '../Posts/Posts';
 import Categories from '../Categories/Categories';
@@ -11,6 +11,7 @@ import { Grid} from '@mui/material';
 function Main() {
   return (
     <main>
+
       <Grid container>
         <Grid item md={12}>
           <Categories />
@@ -25,4 +26,4 @@ function Main() {
   )
 }
 
-export default Main
+export default Main;

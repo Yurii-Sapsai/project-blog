@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,16 +9,16 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 
-import logo from '../../images/logo.png'
-import './Header.sass'
+import logo from '../../images/logo.png';
+import './Header.sass';
 
 import { UserAuth } from '../../context/AuthContext';
 
 const Header = () => {
 
-  const { user, logout } = UserAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
+  const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -31,11 +31,11 @@ const Header = () => {
 
   const handlerLogout = async () => {
     try {
-      await logout()
-      navigate('/admin/login')
+      await logout();
+      navigate('/admin/login');
 
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 

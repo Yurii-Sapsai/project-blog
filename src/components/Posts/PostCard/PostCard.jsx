@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import './PostCard.sass'
+import React, { useState, useEffect } from 'react';
+import './PostCard.sass';
 
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
@@ -7,15 +7,15 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 function PostCard({ post }) {
 
-    const { title, text, uuid, date } = post
-    const [imgUrl, setImgUrl] = useState('')
+    const { title, text, uuid, date } = post;
+    const [imgUrl, setImgUrl] = useState('');
 
     const storage = getStorage();
 
     useEffect(() => {
         getDownloadURL(ref(storage, `gs://blog-app-7d4ac.appspot.com/${uuid}`))
             .then((imgUrl) => setImgUrl(imgUrl))
-    }, [title])
+    }, [title]);
 
     return (
         <div className='postCard'>
@@ -29,4 +29,4 @@ function PostCard({ post }) {
     )
 }
 
-export default PostCard 
+export default PostCard ;

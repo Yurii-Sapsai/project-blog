@@ -1,9 +1,9 @@
-import React from 'react'
-import './HomePage.sass'
+import React from 'react';
+import './HomePage.sass';
 
 
-import Banner from '../../components/Banner/Banner'
-import Main from '../../components/Main/Main'
+import Banner from '../../components/Banner/Banner';
+import Main from '../../components/Main/Main';
 
 
 
@@ -18,4 +18,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default HomePage;

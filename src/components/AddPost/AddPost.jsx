@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import './AddPost.sass'
+import React, { useEffect, useState } from 'react';
+import './AddPost.sass';
 
 import { getDatabase, ref, set } from "firebase/database";
 import { getStorage, ref as reff, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
-import { NavLink } from 'react-router-dom'
 
 import { categories } from '../Categories/Categories';
 
 function AddPost() {
-  const [category, setCategory] = useState('CITIES')
-  const [title, setTitle] = useState('')
-  const [text, setText] = useState('')
-  const [file, setFile] = useState(null)
+  const [category, setCategory] = useState('CITIES');
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
+  const [file, setFile] = useState(null);
 
-  const [formValid, setFormValid] = useState(false)
+  const [formValid, setFormValid] = useState(false);
 
-  const uuid = uuidv4()
-  const date = new Date()
+  const uuid = uuidv4();
+  const date = new Date();
 
   const handleCategory = (e) => {
     setCategory(e.target.value);
@@ -30,28 +29,27 @@ function AddPost() {
   }
 
   const handleFile = (e) => {
-    setFile(e.target.files[0])
+    setFile(e.target.files[0]);
   }
 
   useEffect(() => {
     if (category && title && text && file) {
-      setFormValid(true)
+      setFormValid(true);
     } else {
-      setFormValid(false)
+      setFormValid(false);
     }
-  }, [category, title, text, file])
+  }, [category, title, text, file]);
 
   const createPost = (uuid, category, title, text, date) => {
 
     const db = getDatabase();
-    const reference = ref(db, 'posts/' + uuid)
+    const reference = ref(db, 'posts/' + uuid);
 
     const storage = getStorage();
     const storageRef = reff(storage, uuid);
-    uploadBytes(storageRef, file).then((file) => {
-      console.log('Uploaded a blob or file!');
-    });
 
+    uploadBytes(storageRef, file).then((file) => {
+    });
 
     set(reference, {
       uuid,
@@ -60,10 +58,6 @@ function AddPost() {
       text,
       date: date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
     });
-
-    setCategory('')
-    setTitle('')
-    setText('')
   }
 
 
@@ -102,10 +96,10 @@ function AddPost() {
 
       <input type="file" className='inputFile' onChange={(e) => handleFile(e)} />
 
-      <a href="/project-blog"><button onClick={() => createPost(uuid, category, title, text, date)} disabled={!formValid}>Add post</button></a>
+      <a href="/project-blog" style={{margin:'0 auto'}}><button onClick={() => createPost(uuid, category, title, text, date)} disabled={!formValid}>Add post</button></a>
 
     </div>
   )
 }
 
-export default AddPost
+export default AddPost;
